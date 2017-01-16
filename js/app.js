@@ -1,4 +1,90 @@
+/*var model=[
+{
+	lat:,
+	lng:,
+	name:,
+	img:
 
+
+},
+{
+	lat:,
+	lng:,
+	name:,
+	img:
+
+
+},
+{
+	lat:,
+	lng:,
+	name:,
+	img:
+
+
+},
+{
+	lat:,
+	lng:,
+	name:,
+	img:
+
+
+
+},
+{
+	lat:,
+	lng:,
+	name:,
+	img:
+
+
+},
+{
+	lat:,
+	lng:,
+	name:,
+	img:
+
+
+},
+{
+	lat:,
+	lng:,
+	name:,
+	img:
+
+
+},
+{
+	lat:,
+	lng:,
+	name:,
+	img:
+
+
+},
+{
+	lat:,
+	lng:,
+	name:,
+	img:
+
+
+},
+{
+	lat:,
+	lng:,
+	name:,
+	img:
+
+
+}
+
+
+
+];
+*/
   var model = [
           {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
           {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
@@ -12,7 +98,7 @@
 	
 	this.title=ko.observable(data.title);
 	
-	this.location=ko.observableArray(data.location);
+	this.location=data.location;
 	//The only time we need to write viewModel methods is when we have to change something ourselves
 
 };
@@ -24,6 +110,20 @@ var viewModel=function(){
 		self.locationsList.push(new loc(locName));
 	});
 
+this.currentLoc=ko.observable(this.locationsList()[0]);
+this.setLoc=function(clickedLoc)
+{
+	//sets the currentLoc to selected element from the list view
+	//console.log(clickedLoc.title);
+	this.aloc=ko.observable(clickedLoc.title);
+	console.log(this.aloc());
+	self.currentLoc(clickedLoc);
+
+	
+}
+
+						
+					
 
 
 };
