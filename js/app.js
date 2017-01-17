@@ -33,6 +33,7 @@ this.setLoc=function(clickedLoc)
 	console.log(this.aloc());
 	 self.currentLoc(clickedLoc);
 	 console.log(markers.indexOf(this.aloc())); //trying to get the index of marker with same title as that of clicked title
+	 //console.log(this.locationsList()[0].title());
 
 	
 }
