@@ -29,9 +29,10 @@ this.setLoc=function(clickedLoc)
 {
 	//sets the currentLoc to selected element from the list view
 	//console.log(clickedLoc.title);
-	this.aloc=ko.observable(clickedLoc.title);
+	this.aloc=ko.observable(clickedLoc.title());
 	console.log(this.aloc());
-	self.currentLoc(clickedLoc);
+	 self.currentLoc(clickedLoc);
+	 console.log(markers.indexOf(this.aloc())); //trying to get the index of marker with same title as that of clicked title
 
 	
 }
