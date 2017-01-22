@@ -1,6 +1,4 @@
-var map;
-			var markers=[];
-			function initMap()
+function initMap()
 			{
 				//This program gives the map for a multile location
 				//constructor constructs a map,only center and zoom are required
@@ -16,7 +14,7 @@ var map;
 				var largeinfowindow=new google.maps.InfoWindow();
 				var bounds=new google.maps.LatLngBounds(); //To adjust the listings outside the zoom area.This instance captures the south west and north east corners of the viewport
 				//loop through the model array to create an array of markers on initialize
-				for(var i=0;i<model.length;i++)
+			for(var i=0;i<model.length;i++)
 				{
 					//get location and title
 					var position=model[i].location;
@@ -31,17 +29,23 @@ var map;
 					id:i
 					});
 					markers.push(marker);
+					 model[i].marker = marker;  // add marker as a property of each model location.
+
 					//Extend map boundaries for each marker
 					bounds.extend(marker.position);
 					//create an onclick event to open an infowindow at each marker
 
 					marker.addListener('click',function()
 					{
+
 						populateInfoWindow(this,largeinfowindow); //Tells the info window to open at that marker and populate the information specific to that marker
 
 					});
+					
 				}
 				map.fitBounds(bounds);
+
+
 			}
 				//This function populates the infoWindow when the marker is clicked.We will allow only one infowindow which is opened when the marker is clicked and populate based on marker's position
 				function populateInfoWindow(marker,infowindow)
@@ -60,5 +64,4 @@ var map;
 					}
 
 				}
-
-
+				
