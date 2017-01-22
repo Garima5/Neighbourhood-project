@@ -32,9 +32,7 @@ this.setLoc=function(clickedLoc)
 	this.aloc=ko.observable(clickedLoc.title());
 	console.log(this.aloc());
 	 self.currentLoc(clickedLoc);
-	 console.log(markers.indexOf(this.aloc())); //trying to get the index of marker with same title as that of clicked title
-	 //console.log(this.locationsList()[0].title());
-
+	  console.log(clickedLoc.marker);
 	
 }
 
