@@ -29,7 +29,8 @@ function initMap()
 					id:i
 					});
 					markers.push(marker);
-					 model[i].marker = marker;  // add marker as a property of each model location.
+					// model[i].marker = marker;  
+					vm.locationsList()[i].marker = marker; // add marker as a property of each locList location.
 
 					//Extend map boundaries for each marker
 					bounds.extend(marker.position);
