@@ -32,7 +32,12 @@ this.setLoc=function(clickedLoc)
 	this.aloc=ko.observable(clickedLoc.title());
 	console.log(this.aloc());
 	 self.currentLoc(clickedLoc);
-	  console.log(clickedLoc.marker);
+	 console.log(clickedLoc.marker.position.lat());
+	 //console.log(this.locationsList()[0].title());
+	 var largeinfowindow1=new google.maps.InfoWindow(); //creating a new info window
+	 
+	 populateInfoWindow(clickedLoc.marker,largeinfowindow1); //populating the info window by clicked marker from list
+
 	
 }
 
