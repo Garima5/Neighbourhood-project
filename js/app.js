@@ -1,4 +1,6 @@
 
+var map;
+			var markers=[];
   var model = [
           {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
           {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
@@ -16,6 +18,7 @@
 	//The only time we need to write viewModel methods is when we have to change something ourselves
 
 };
+
 var viewModel=function(){
 	var self=this;
 	
@@ -25,6 +28,8 @@ var viewModel=function(){
 	});
 
 this.currentLoc=ko.observable(this.locationsList()[0]);
+//console.log(this.locationsList()[0].title());
+
 this.setLoc=function(clickedLoc)
 {
 	//sets the currentLoc to selected element from the list view
@@ -41,10 +46,14 @@ this.setLoc=function(clickedLoc)
 	
 }
 
-						
+
 					
 
 
 };
+ var vm = new viewModel();
+  ko.applyBindings(vm);
 
-ko.applyBindings(new viewModel()); 
+//ko.applyBindings(new viewModel()); 
+
+			
