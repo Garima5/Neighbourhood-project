@@ -1,3 +1,4 @@
+var largeinfowindow1;
 function initMap()
 			{
 				//This program gives the map for a multile location
@@ -12,6 +13,7 @@ function initMap()
 				//You can use locations from database to render on the map.You can use layer,data layer,fusion layer
 				
 				var largeinfowindow=new google.maps.InfoWindow();
+				largeinfowindow1=new google.maps.InfoWindow();//Info window to be opened when click the list item.Also We are declaring it here becuse map.js loads befor app.ja
 				var bounds=new google.maps.LatLngBounds(); //To adjust the listings outside the zoom area.This instance captures the south west and north east corners of the viewport
 				//loop through the model array to create an array of markers on initialize
 			for(var i=0;i<model.length;i++)
