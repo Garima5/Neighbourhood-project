@@ -1,4 +1,3 @@
-
 var map;
 			var markers=[];
   var model = [
@@ -30,6 +29,7 @@ var viewModel=function(){
 this.currentLoc=ko.observable(this.locationsList()[0]);
 //console.log(this.locationsList()[0].title());
 
+
 this.setLoc=function(clickedLoc)
 {
 	//sets the currentLoc to selected element from the list view
@@ -39,7 +39,7 @@ this.setLoc=function(clickedLoc)
 	 self.currentLoc(clickedLoc);
 	 console.log(clickedLoc.marker.position.lat());
 	 //console.log(this.locationsList()[0].title());
-	 var largeinfowindow1=new google.maps.InfoWindow(); //creating a new info window
+	// var largeinfowindow1=new google.maps.InfoWindow(); //creating a new info window
 	 
 	 populateInfoWindow(clickedLoc.marker,largeinfowindow1); //populating the info window by clicked marker from list
 
@@ -53,7 +53,3 @@ this.setLoc=function(clickedLoc)
 };
  var vm = new viewModel();
   ko.applyBindings(vm);
-
-//ko.applyBindings(new viewModel()); 
-
-			
