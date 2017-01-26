@@ -29,7 +29,10 @@ var viewModel=function(){
 this.currentLoc=ko.observable(this.locationsList()[0]);
 //console.log(this.locationsList()[0].title());
 this.searchedName= ko.observable(""); //fills in the input value from text box
-
+self.ShortName = ko.computed(function () {
+	//function to split the input string
+    return self.searchedName().split(" ");
+}, self);
 
 this.setLoc=function(clickedLoc)
 {
@@ -46,9 +49,26 @@ this.setLoc=function(clickedLoc)
 
 	
 }
-this.searchLoc=function(searchedLoc)
+this.searchLoc=function()
 {
-console.log(searchedLoc);
+	this.locationsTitle=ko.observableArray([]); //List of all the titles
+	model.forEach(function(locName){
+		self.locationsTitle.push(new loc(locName).title());
+	});
+	//console.log(this.locationsTitle()[1]);
+console.log(this.searchedName()); //prints to console the input given by user
+console.log(this.ShortName());//prints array of split
+filteredItems = ko.computed(function() {
+    var filter = this.searchedName().toLowerCase();
+    if (!filter) {
+        return this.locationsList();
+    } else {
+        return ko.utils.arrayFilter(this.locationsList(), function(item) {
+            return ko.utils.stringStartsWith(locationsList.title().toLowerCase(), filter);
+        });
+    }
+}, self);
+
 }
 
 
@@ -56,5 +76,6 @@ console.log(searchedLoc);
 
 
 };
+
  var vm = new viewModel();
   ko.applyBindings(vm);
