@@ -28,6 +28,7 @@ var viewModel=function(){
 
 this.currentLoc=ko.observable(this.locationsList()[0]);
 //console.log(this.locationsList()[0].title());
+this.searchedName= ko.observable(""); //fills in the input value from text box
 
 
 this.setLoc=function(clickedLoc)
@@ -44,6 +45,10 @@ this.setLoc=function(clickedLoc)
 	 populateInfoWindow(clickedLoc.marker,largeinfowindow1); //populating the info window by clicked marker from list
 
 	
+}
+this.searchLoc=function(searchedLoc)
+{
+console.log(searchedLoc);
 }
 
 
