@@ -16,6 +16,15 @@ function initMap()
 				largeinfowindow1=new google.maps.InfoWindow();//Info window to be opened when click the list item.Also We are declaring it here becuse map.js loads befor app.ja
 				var bounds=new google.maps.LatLngBounds(); //To adjust the listings outside the zoom area.This instance captures the south west and north east corners of the viewport
 				//loop through the model array to create an array of markers on initialize
+				//var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+				 var icons = { //icons based on type of place
+          house: {
+            icon: 'images/house.png'
+          },
+          restaurant: {
+            icon: 'images/restaurant.png'
+          }
+        };
 			for(var i=0;i<model.length;i++)
 				{
 					//get location and title
@@ -28,6 +37,8 @@ function initMap()
 					map:map,
 					animation: google.maps.Animation.DROP, //ADDing animated marker
 					title:title,
+					icon: icons[model[i].type].icon,
+					animation: google.maps.Animation.DROP,
 					id:i
 					});
 					markers.push(marker);
@@ -44,6 +55,13 @@ function initMap()
 						populateInfoWindow(this,largeinfowindow); //Tells the info window to open at that marker and populate the information specific to that marker
 
 					});
+					  marker.addListener('click', function()
+					  	{
+					  		toggleBounce(this);
+					  		toggleShape(this);
+					  	});
+
+
 					
 				}
 				map.fitBounds(bounds);
@@ -68,3 +86,25 @@ function initMap()
 
 				}
 				
+				 function toggleBounce(marker) {
+				 	//function to toggle the marker up and down.Code help from google.developer
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+      }
+      function toggleShape(marker) {
+
+				 	//function to toggle the marker icon on click
+        if(marker.type='restaurant')
+        {
+
+        	marker.setIcon('images/hut.png');
+        }
+        else
+        {
+        	console.log("marker");
+
+        }
+      }
