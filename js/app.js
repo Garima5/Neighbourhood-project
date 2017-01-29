@@ -1,12 +1,13 @@
 var map;
 			var markers=[];
   var model = [
-          {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
-          {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
-          {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}},
-          {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
-          {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
-          {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
+          {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393},type: 'house'},
+           {title: 'Hells Kitchen', location: {lat: 40.7638, lng: -73.9918},type: 'restaurant'},
+          {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465},type: 'house'},
+          {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759},type: 'house'},
+          {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377},type: 'house'},
+          {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934},type: 'house'},
+          {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237},type: 'house'}
         ];
  var loc=function(data) //data is an object literal
 {
@@ -49,25 +50,33 @@ this.setLoc=function(clickedLoc)
 
 	
 }
+var filteredItems;
 this.searchLoc=function()
 {
-	this.locationsTitle=ko.observableArray([]); //List of all the titles
+	var locationsTitle=ko.observableArray([]); //List of all the titles
 	model.forEach(function(locName){
-		self.locationsTitle.push(new loc(locName).title());
+		locationsTitle.push(new loc(locName).title());
 	});
+	console.log(locationsTitle());
 	//console.log(this.locationsTitle()[1]);
 console.log(this.searchedName()); //prints to console the input given by user
 console.log(this.ShortName());//prints array of split
-filteredItems = ko.computed(function() {
+ filteredItems = ko.computed(function() {
     var filter = this.searchedName().toLowerCase();
     if (!filter) {
         return this.locationsList();
     } else {
+      
         return ko.utils.arrayFilter(this.locationsList(), function(item) {
-            return ko.utils.stringStartsWith(locationsList.title().toLowerCase(), filter);
+        	//return this.locationsList.indexOf(item.title().toLowerCase());
+        	console.log(item.title());
+        	
+        	return item.title().indexOf(filter);
         });
+
     }
-}, self);
+}, this);
+console.log(filteredItems());
 
 }
 
