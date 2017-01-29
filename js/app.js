@@ -43,14 +43,13 @@ this.setLoc=function(clickedLoc)
 	console.log(this.aloc());
 	 self.currentLoc(clickedLoc);
 	 console.log(clickedLoc.marker.position.lat());
-	 //console.log(this.locationsList()[0].title());
-	// var largeinfowindow1=new google.maps.InfoWindow(); //creating a new info window
+	
 	 
 	 populateInfoWindow(clickedLoc.marker,largeinfowindow1); //populating the info window by clicked marker from list
 
 	
 }
-var filteredItems;
+//var filteredItems;
 this.searchLoc=function()
 {
 	var locationsTitle=ko.observableArray([]); //List of all the titles
@@ -58,33 +57,24 @@ this.searchLoc=function()
 		locationsTitle.push(new loc(locName).title());
 	});
 	
- filteredItems = ko.computed(function() {
+
+}
+
+this.filteredItems = ko.computed(function() {
     var filter = this.searchedName().toLowerCase();
    // console.log(filter);
     if (!filter) {
         return this.locationsList();
     } else {
-      
+       
         return ko.utils.arrayFilter(this.locationsList(), function(item) {
         	
-        	if(item.title().toLowerCase().indexOf(filter)!=-1)
-        	{
-        		console.log(locationsTitle.indexOf(item.title()));
-        		return locationsTitle.indexOf(item.title())
-        	}
         	
-        	
+        	return item.title().toLowerCase().indexOf(filter) != -1; //returns true if filter that is item entered matches the item.title()
         });
 
     }
 }, this);
-console.log(filteredItems());
-
-}
-
-
-					
-
 
 };
 
