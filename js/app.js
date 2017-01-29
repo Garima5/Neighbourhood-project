@@ -57,21 +57,23 @@ this.searchLoc=function()
 	model.forEach(function(locName){
 		locationsTitle.push(new loc(locName).title());
 	});
-	console.log(locationsTitle());
-	//console.log(this.locationsTitle()[1]);
-console.log(this.searchedName()); //prints to console the input given by user
-console.log(this.ShortName());//prints array of split
+	
  filteredItems = ko.computed(function() {
     var filter = this.searchedName().toLowerCase();
+   // console.log(filter);
     if (!filter) {
         return this.locationsList();
     } else {
       
         return ko.utils.arrayFilter(this.locationsList(), function(item) {
-        	//return this.locationsList.indexOf(item.title().toLowerCase());
-        	console.log(item.title());
         	
-        	return item.title().indexOf(filter);
+        	if(item.title().toLowerCase().indexOf(filter)!=-1)
+        	{
+        		console.log(locationsTitle.indexOf(item.title()));
+        		return locationsTitle.indexOf(item.title())
+        	}
+        	
+        	
         });
 
     }
