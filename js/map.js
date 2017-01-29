@@ -38,6 +38,7 @@ function initMap()
 					animation: google.maps.Animation.DROP, //ADDing animated marker
 					title:title,
 					icon: icons[model[i].type].icon,
+					type:model[i].type,
 					animation: google.maps.Animation.DROP,
 					id:i
 					});
@@ -59,6 +60,8 @@ function initMap()
 					  	{
 					  		toggleBounce(this);
 					  		toggleShape(this);
+					  		 stopAnimation(this); //to stop the marker from animation bouncing, help from:"http://stackoverflow.com/questions/14657779/google-maps-bounce-animation-on-marker-for-a-limited-period"
+
 					  	});
 
 
@@ -97,7 +100,7 @@ function initMap()
       function toggleShape(marker) {
 
 				 	//function to toggle the marker icon on click
-        if(marker.type='restaurant')
+        if(marker.type==='restaurant')
         {
 
         	marker.setIcon('images/hut.png');
@@ -108,3 +111,8 @@ function initMap()
 
         }
       }
+      function stopAnimation(marker) {
+    setTimeout(function () {
+        marker.setAnimation(null);
+    }, 3000);
+}
