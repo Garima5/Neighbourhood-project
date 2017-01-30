@@ -61,16 +61,19 @@ this.searchLoc=function()
 {
 	
 
-	
-
 }
 
 this.filteredItems = ko.computed(function() {
     var filter = this.searchedName().toLowerCase();
    // console.log(filter);
     if (!filter) {
+    	for (var i = markers.length - 1; i >= 0; i--) {
+    		markers[i].setVisible(true); //get all the markers back
+    	}
+    	
         return this.locationsList();
     } else {
+    	
      
         return ko.utils.arrayFilter(this.locationsList(), function(item) {
         	var index=locationsTitle.indexOf(item.title());
@@ -88,6 +91,7 @@ this.filteredItems = ko.computed(function() {
         		markers[index].setVisible(true);
 
         	}
+
         	return item.title().toLowerCase().indexOf(filter) != -1; //returns true if filter that is item entered matches the item.title()
         });
 
