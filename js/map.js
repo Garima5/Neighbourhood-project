@@ -151,3 +151,5 @@ function initMap()
         marker.setAnimation(null);
     }, 3000);
 }
+
+/////////////
