@@ -2,13 +2,14 @@
 var map;
 			var markers=[];
   var model = [
-          {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393},type: 'house'},
-           {title: 'Hells Kitchen', location: {lat: 40.7638, lng: -73.9918},type: 'restaurant'},
-          {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465},type: 'house'},
-          {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759},type: 'house'},
-          {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377},type: 'house'},
-          {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934},type: 'house'},
-          {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237},type: 'house'}
+          {title: 'Palo Alto', location: {lat: 37.4419, lng: -122.1430},type: 'house'},
+           {title: 'Stanford University', location: {lat: 37.427475, lng: -122.169719},type: 'university'},
+          {title: 'Mountain View', location: {lat: 37.386052, lng: -122.083851},type: 'house'},
+          {title: 'Menlo Park Central', location: {lat: 37.4530, lng: -122.1817},type: 'house'},
+          {title: 'Stanford Shopping Center', location: {lat: 37.443126, lng:  -122.171574},type: 'shopping'},
+          {title: 'Four Seasons Hotel Silicon Valley', location: {lat:37.460333, lng: -122.142531},type: 'hotel'},
+          {title: 'GooglePlex', location: {lat:37.422000, lng: -122.084057},type: 'work'},
+          {title: 'Nasa Ames Research Center', location: {lat:37.409070, lng: -122.063825},type: 'work'}
         ];
  var loc=function(data) //data is an object literal
 {
@@ -59,6 +60,34 @@ var locationsTitle=ko.observableArray([]); //List of all the titles
 	});
 this.searchLoc=function()
 {
+	/*var locationsTitle=ko.observableArray([]); //List of all the titles
+	model.forEach(function(locName){
+		locationsTitle.push(new loc(locName).title());
+	});*/
+/*	var removedMarkers=ko.observableArray();
+	this.filtered_removedItems = ko.computed(function() {
+    var filter = this.searchedName().toLowerCase();
+   // console.log(filter);
+    if (!filter) {
+        return this.locationsList();
+    } else {
+     
+        return ko.utils.arrayFilter(this.locationsList(), function(item) {
+        	
+        	if(item.title().toLowerCase().indexOf(filter)===-1)
+        	{
+        		console.log(locationsTitle.indexOf(item.title()));
+        		var index=locationsTitle.indexOf(item.title()); //get the index of the markers to be removed
+        		markers[index].setMap(null);
+        		//return locationsTitle.indexOf(item.title())
+        	}
+        	
+        	return item.title().toLowerCase().indexOf(filter) === -1; //returns true if filter that is item entered matches the item.title()
+        });
+
+    }
+}, this);*/
+
 	
 
 }
