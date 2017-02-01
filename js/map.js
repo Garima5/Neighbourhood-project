@@ -8,8 +8,8 @@ function initMap() {
 
         map = new google.maps.Map(document.getElementById('map'), { //creating a new instance of map--This tells in which html part the map will be shown
             center: {
-                lat: 40.771324,
-                lng: -73.9632393
+                lat: 37.4419,
+                lng: -122.1430
             }, //this tells what part of the world to show--what image to show and how much should be dtail
             zoom: 13 //Higher the number --higher the detailing--can go upto 21
         });
@@ -24,8 +24,17 @@ function initMap() {
             house: {
                 icon: 'images/house.png'
             },
-            restaurant: {
-                icon: 'images/restaurant.png'
+            hotel: {
+                icon: 'images/hotel.png'
+            },
+            university: {
+                icon: 'images/university.png'
+            },
+            work: {
+                icon: 'images/work.png'
+            },
+            shopping: {
+                icon: 'images/market.png'
             }
         };
         for (var i = 0; i < model.length; i++) {
@@ -103,14 +112,14 @@ function populateInfoWindow(marker, infowindow) {
                 console.log(response);
                 var articlrList = response.photos.photo;
                 var num = Math.floor((Math.random() * 100) + 1);
-                for (var i = num; i < num + 5; i++) {
+                for (var i = num; i < num + 2; i++) {
                     var farmid = articlrList[i].farm;
                     var serverid = articlrList[i].server;
                     var photoid = articlrList[i].id;
                     var secret = articlrList[i].secret;
                     // var  size= m;
                     var url = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + photoid + '_' + secret + '.jpg';
-                    $body.append('<img src="' + url + '" class="thumbnail">');
+                    $("#images").append('<img src="' + url + '" class="thumbnail ">');
                 }
 
             }
@@ -120,7 +129,7 @@ function populateInfoWindow(marker, infowindow) {
         //////////////////////////////////////////////////
         //Wikipedia api
         //This api request appends any wikipedia articles related to the place
-        var citystr = marker.title;
+       /* var citystr = marker.title;
         console.log(citystr);
         console.log(citystr);
         var playListURL = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + citystr + '&format=json&callback=wikiCallback';
@@ -135,11 +144,11 @@ function populateInfoWindow(marker, infowindow) {
                     articleStr = articleList[i];
                     // console.log(articleStr);
                     var url = 'https://en.wikipedia.org/wiki/' + articleStr;
-                    $("#images").append('<li><a href="' + url + '">' + articleStr + '</a></li>')
+                    $("#wikipediaLinks").append('<li><a href="' + url + '">' + articleStr + '</a></li>')
                 }
             }
 
-        });
+        });*/
         ////////////////////////////////////////////////
         // In case the status is OK, which means the pano was found, compute the
         // position of the streetview image, then calculate the heading, then get a
@@ -187,13 +196,26 @@ function toggleBounce(marker) {
 function toggleShape(marker) {
 
     //function to toggle the marker icon on click
-    if (marker.type === 'restaurant') {
+    if (marker.type === 'hotel') {
 
         marker.setIcon('images/hotfoodcheckpoint.png');
     }
     if (marker.type === 'house') {
 
         marker.setIcon('images/hut.png');
+    }
+
+    if (marker.type === 'university') {
+
+        marker.setIcon('images/school.png');
+    }
+     if (marker.type === 'work') {
+
+        marker.setIcon('images/office.png');
+    }
+    if (marker.type === 'shopping') {
+
+        marker.setIcon('images/mall.png');
     } else {
         console.log("marker");
 
