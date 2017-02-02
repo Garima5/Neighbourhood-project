@@ -1,0 +1,63 @@
+html,body {
+font-family:arial;
+height:100%;
+margin:0;
+padding:0;
+}
+
+#backrow {
+height:100%;
+background-color:#06001a;
+overflow:scroll;
+}
+
+#pano {
+width:200px;
+height:200px;
+}
+
+#images {
+padding-left:5%;
+}
+
+.thumbnail {
+width:50%;
+height:50%;
+padding:2px;
+}
+
+#formElement {
+margin:5% 5% 5% 7%;
+padding:1% 1% 1% 3%;
+}
+
+ul {
+list-style:none;
+}
+
+ul li {
+color:#FFF;
+background-color:#12004d;
+margin:5px;
+padding:1.5%;
+}
+
+ul li:hover {
+background-color:purple;
+cursor:pointer;
+}
+
+#errormsg {
+background-color:#FFF;
+color:red;
+border-radius:2%;
+}
+
+.errormsg {
+color:#FFF;
+font-size:20px;
+}
+
+.row,#map,#list-view,.container-fluid {
+height:100%;
+}
