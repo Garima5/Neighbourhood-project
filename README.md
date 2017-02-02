@@ -13,3 +13,7 @@
 All mapicons have been taken from:
 mapicons.mapsmarker.com
 
+Thanks to following resources for help:
+https://developers.google.com/maps/documentation/javascript/examples/marker-animations for help with animating markers
+https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf
+https://developers.google.com/maps/documentation/javascript/custom-markers for help with marker shapes
