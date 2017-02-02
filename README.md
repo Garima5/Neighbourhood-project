@@ -10,3 +10,6 @@
 ### Code provided by Udacity's FEND course on API was taken help from to fill the infoWindow
 ####Knockout js, Google Maps pi and 3rd party API were the main technologies used in the project
 
+All mapicons have been taken from:
+mapicons.mapsmarker.com
+
