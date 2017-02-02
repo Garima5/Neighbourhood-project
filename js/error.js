@@ -1,4 +1,5 @@
 function googleError() {
+    //help from Udacity link
     var cssClass; 
     if (typeof google === "undefined") {
         cssClass = "Oops!Something broke, We will be back soon!";
