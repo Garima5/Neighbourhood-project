@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+   <title>My neighbourhood</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <script src="js/jQuery.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+   <meta name="viewport" content="width=device-width">
+</head>
+<body>
+   <div class="container-fluid">
+      <div class="row" id="backrow">
+         <div class="col-lg-3">
+            <div class="row" id="formElement">
+               <form>
+                  <input data-bind="textInput : searchedName">
+                  <input type="reset" name="filter" id="filter" data-bind="click: resetLoc">
+                  <!-- button to reset the markers-->
+               </form>
+            </div>
+            <div class="row" id="list-view">
+               <ul id="locations-list" data-bind="foreach :filteredItems">
+                  <li class="listitem" data-bind="text:title,click: $parent.setLoc"></li>
+               </ul>
+            </div>
+            <div class="row">
+               <div id="images">
+               </div>
+               images provided by <a href="https://www.flickr.com/services/api/">Flikr</a> photo.search api
+            </div>
+         </div>
+         <div class="col-lg-9" id="map">
+         </div>
+      </div>
+   </div>
+   <script src="js/lib/knockout-3.2.0.js"></script>
+   <script src="js/app.js"></script>
+   <script type="text/javascript" src="js/map.js"></script>
+   <script type="text/javascript" src="js/error.js"></script>
+   <script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&v=3&key=AIzaSyA8LY-wAc7TeTlIqDl0uiBg7i1RlF3w5jM&callback=initMap" onerror="googleError()"></script>
+</body>
+</html>
