@@ -90,7 +90,7 @@ function populateInfoWindow(marker, infowindow) {
         var radius = 50;
         //Ajax requests using flickr api
         //This api request gives different types of food and people that can be found at that place
-        var $body = $('#images');
+       /* var $body = $('#images');
         var lat = marker.getPosition().lat();
         var long = marker.getPosition().lng();
         var urlflikr = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ce3902a4e6719f36c22ceb61431312be&tags=food&text=people&lat=' + lat + '&lon=' + long + '&format=json&nojsoncallback=1';
@@ -115,7 +115,7 @@ function populateInfoWindow(marker, infowindow) {
         }).fail(function(xhr, textStatus, errorThrown) {
             var str = "Sory the request failed to load.Try agin after sometime";
             $("#images").append('<div id="errormsg">' + str + '</div>');
-        });
+        });*/
 
         //Below code help taken from Udacity's code provided in course
         // In case the status is OK, which means the pano was found, compute the
