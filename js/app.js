@@ -1,63 +1,100 @@
 var map;
 var markers = [];
-var model = [
-    //contains list of places that are in the neighbourhood that I want to live
+var model = [{ //contains list of places
+        title: 'Park Ave Penthouse',
+        location: {
+            lat: 40.7713024,
+            lng: -73.9632393
+        },
+        type: 'house'
+    },
     {
-        title: 'Palo Alto',
+        title: 'Hells Kitchen',
         location: {
-            lat: 37.4419,
-            lng: -122.1430
+            lat: 40.7638,
+            lng: -73.9918
+        },
+        type: 'restaurant'
+    },
+    {
+        title: 'Chelsea Loft',
+        location: {
+            lat: 40.7444883,
+            lng: -73.9949465
         },
         type: 'house'
-    }, {
-        title: 'Stanford University',
+    },
+    {
+        title: 'Union Square Open Floor Plan',
         location: {
-            lat: 37.427475,
-            lng: -122.169719
-        },
-        type: 'university'
-    }, {
-        title: 'Mountain View',
-        location: {
-            lat: 37.386052,
-            lng: -122.083851
+            lat: 40.7347062,
+            lng: -73.9895759
         },
         type: 'house'
-    }, {
-        title: 'Menlo Park Central',
+    },
+    {
+        title: 'East Village Hip Studio',
         location: {
-            lat: 37.4530,
-            lng: -122.1817
+            lat: 40.7281777,
+            lng: -73.984377
         },
         type: 'house'
-    }, {
-        title: 'Stanford Shopping Center',
+    },
+    {
+        title: 'TriBeCa Artsy Bachelor Pad',
         location: {
-            lat: 37.443126,
-            lng: -122.171574
+            lat: 40.7195264,
+            lng: -74.0089934
+        },
+        type: 'house'
+    },
+    {
+        title: 'Chinatown Homey Space',
+        location: {
+            lat: 40.7180628,
+            lng: -73.9961237
+        },
+        type: 'house'
+    },
+    {
+        title: 'Rockfeller Center',
+        location: {
+            lat: 40.7587,
+            lng: -73.9787
+        },
+        type: 'work'
+    },
+    {
+        title: 'Times Square',
+        location: {
+            lat: 40.7590,
+            lng: -73.9845
         },
         type: 'shopping'
-    }, {
-        title: 'Four Seasons Hotel Silicon Valley',
+    },
+    {
+        title: 'Columbia University',
         location: {
-            lat: 37.460333,
-            lng: -122.142531
+            lat: 40.8075,
+            lng: -73.9626
         },
-        type: 'hotel'
-    }, {
-        title: 'GooglePlex',
+        type: 'university'
+    },
+    {
+        title: 'United Nations Headquarter',
         location: {
-            lat: 37.422000,
-            lng: -122.084057
+            lat: 40.7489,
+            lng: -73.9680
         },
-        type: 'work'
-    }, {
-        title: 'Nasa Ames Research Center',
+        type: 'unitednations'
+    },
+    {
+        title: 'Empire State Building',
         location: {
-            lat: 37.409070,
-            lng: -122.063825
+            lat: 40.7484,
+            lng: -73.9857
         },
-        type: 'work'
+        type: 'monument'
     }
 ];
 var loc = function(data) {
@@ -66,8 +103,8 @@ var loc = function(data) {
     this.type = data.type;
 };
 /**
-* @description View Model for the project
-*/
+ * @description View Model for the project
+ */
 var viewModel = function() {
     var self = this;
     this.locationsList = ko.observableArray([]);
@@ -78,7 +115,7 @@ var viewModel = function() {
     this.searchedName = ko.observable(""); //fills in the input value from text box
     self.ShortName = ko.computed(function() {
         return self.searchedName().split(" ");
-    }, self);    
+    }, self);
     this.setLoc = function(clickedLoc) {
         //sets the currentLoc to selected element from the list view
         this.aloc = ko.observable(clickedLoc.title());
