@@ -96,6 +96,9 @@ function populateInfoWindow(marker, infowindow) {
                 var articlrList = response.photos.photo;
                 var num = Math.floor((Math.random() * 100) + 1);
                 for (var i = num; i < num + 3; i++) {
+                	if(articlrList[i].hasOwnProperty("farm")){
+    alert("yes, i have that property");
+}
                     var farmid = articlrList[i].farm;
                     var serverid = articlrList[i].server;
                     var photoid = articlrList[i].id;
