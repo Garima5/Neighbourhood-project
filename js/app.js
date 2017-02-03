@@ -1,6 +1,6 @@
 var map;
 var markers = [];
-var model = [{ //contains list of places
+var model = [{
         title: 'Park Ave Penthouse',
         location: {
             lat: 40.7713024,
@@ -108,6 +108,7 @@ var loc = function(data) {
 var viewModel = function() {
     var self = this;
     this.locationsList = ko.observableArray([]);
+    this.apiImages = ko.observableArray([]); //array to store api images
     model.forEach(function(locName) {
         self.locationsList.push(new loc(locName));
     });
@@ -120,8 +121,13 @@ var viewModel = function() {
         //sets the currentLoc to selected element from the list view
         this.aloc = ko.observable(clickedLoc.title());
         self.currentLoc(clickedLoc);
+         toggleBounce(clickedLoc.marker);
+            toggleShape(clickedLoc.marker);
+            stopAnimation(clickedLoc.marker);
         populateInfoWindow(clickedLoc.marker, largeinfowindow1); //populating the info window by clicked marker from list
-    }
+      loadapi(clickedLoc);
+       //console.log(lat);   
+        }
     var locationsTitle = ko.observableArray([]); //List of all the titles
     model.forEach(function(locName) {
         locationsTitle.push(new loc(locName).title());
@@ -150,6 +156,40 @@ var viewModel = function() {
         for (var t = 0; t < markers.length; t++) {
             markers[t].setMap(map);
         }
+    }
+
+
+this.apiimage=ko.observableArray(); //array to store url of images mapped
+    var loadapi=function(location)
+    {
+        //function to store the urls in the apiimage array
+      self.apiimage.removeAll();
+       
+         var lat = location.location.lat;
+        var long = location.location.lng;
+        console.log(lat)
+       // return lat;
+        var urlflikr = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ce3902a4e6719f36c22ceb61431312be&tags=food&text=people&lat=' + lat + '&lon=' + long + '&format=json&nojsoncallback=1';
+        var jqxhr = $.ajax({
+            url: urlflikr,
+            dataType: "json",
+            success: function(response) {
+                //console.log(response);
+                var articlrList = response.photos.photo;
+                var num = Math.floor((Math.random() * 100) + 1);
+                for (var i = num; i < num + 2; i++) {
+                    var farmid = articlrList[i].farm;
+                    var serverid = articlrList[i].server;
+                    var photoid = articlrList[i].id;
+                    var secret = articlrList[i].secret;
+                    var url = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + photoid + '_' + secret + '.jpg';
+                    //$("#images").append('<img src="' + url + '" class="thumbnail ">');
+                    self.apiimage.push(url);
+                }
+
+            }
+
+        })
     }
 };
 var vm = new viewModel();
