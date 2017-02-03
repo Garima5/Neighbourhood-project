@@ -1,13 +1,13 @@
 var largeinfowindow1;
 /**
-* @description creates everything of the map after the page loads but before the user interacts with the page
-* @constructor constructs a map,only center and zoom are required
-*/
-function initMap() {     
+ * @description creates everything of the map after the page loads but before the user interacts with the page
+ * @constructor constructs a map,only center and zoom are required
+ */
+function initMap() {
     map = new google.maps.Map(document.getElementById('map'), { //creating a new instance of map--This tells in which html part the map will be shown
         center: {
-            lat: 37.4419,
-            lng: -122.1430
+            lat: 40.7484,
+            lng: -73.9857
         }, //this tells what part of the world to show--what image to show and how much should be dtail
         zoom: 13 //Higher the number --higher the detailing--can go upto 21
     });
@@ -18,14 +18,20 @@ function initMap() {
         house: {
             icon: 'images/house.png'
         },
-        hotel: {
-            icon: 'images/hotel.png'
+        restaurant: {
+            icon: 'images/restaurant.png'
         },
         university: {
             icon: 'images/university.png'
         },
         work: {
             icon: 'images/work.png'
+        },
+        monument: {
+            icon: 'images/moderntower.png'
+        },
+        unitednations: {
+            icon: 'images/world.png'
         },
         shopping: {
             icon: 'images/market.png'
@@ -65,11 +71,11 @@ function initMap() {
     map.fitBounds(bounds);
 }
 /**
-* @description populates the infoWindow when the marker is clicked
-* @param {marker} marker
-* @param {infowindow} infowindow
-*/
-function populateInfoWindow(marker, infowindow) {    
+ * @description populates the infoWindow when the marker is clicked
+ * @param {marker} marker
+ * @param {infowindow} infowindow
+ */
+function populateInfoWindow(marker, infowindow) {
     var $body1 = $('#images'); //getting the div with id imges
     $body1.empty(); //clear previous code from div
     if (infowindow.marker != marker) {
@@ -95,10 +101,7 @@ function populateInfoWindow(marker, infowindow) {
                 //console.log(response);
                 var articlrList = response.photos.photo;
                 var num = Math.floor((Math.random() * 100) + 1);
-                for (var i = num; i < num + 3; i++) {
-                	if(articlrList[i].hasOwnProperty("farm")){
-    alert("yes, i have that property");
-}
+                for (var i = num; i < num + 2; i++) {
                     var farmid = articlrList[i].farm;
                     var serverid = articlrList[i].server;
                     var photoid = articlrList[i].id;
@@ -159,7 +162,7 @@ function toggleBounce(marker) {
 @param {marker} marker
 */
 function toggleShape(marker) {
-    if (marker.type === 'hotel') {
+    if (marker.type === 'restaurant') {
 
         marker.setIcon('images/hotfoodcheckpoint.png');
     }
@@ -172,6 +175,10 @@ function toggleShape(marker) {
 
         marker.setIcon('images/school.png');
     }
+    if (marker.type === 'monumemt') {
+
+        marker.setIcon('images/modernmonument.png');
+    }
     if (marker.type === 'work') {
 
         marker.setIcon('images/office.png');
@@ -179,9 +186,13 @@ function toggleShape(marker) {
     if (marker.type === 'shopping') {
 
         marker.setIcon('images/mall.png');
-    } else {      
+    }
+    if (marker.type === 'unitednations') {
+
+        marker.setIcon('images/worldheritagesite.png');
     }
 }
+
 function stopAnimation(marker) {
     //function to stop animation
     setTimeout(function() {
