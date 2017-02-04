@@ -105,7 +105,7 @@ var loc = function(data) {
 /**
  * @description View Model for the project
  */
-var viewModel = function() {
+var ViewModel = function() {
     var self = this;
     this.locationsList = ko.observableArray([]);
     this.apiImages = ko.observableArray([]); //array to store api images
@@ -121,13 +121,13 @@ var viewModel = function() {
         //sets the currentLoc to selected element from the list view
         this.aloc = ko.observable(clickedLoc.title());
         self.currentLoc(clickedLoc);
-         toggleBounce(clickedLoc.marker);
-            toggleShape(clickedLoc.marker);
-            stopAnimation(clickedLoc.marker);
+        toggleBounce(clickedLoc.marker);
+        toggleShape(clickedLoc.marker);
+        stopAnimation(clickedLoc.marker);
         populateInfoWindow(clickedLoc.marker, largeinfowindow1); //populating the info window by clicked marker from list
-      loadapi(clickedLoc);
-       //console.log(lat);   
-        }
+        loadapi(clickedLoc);
+        //console.log(lat);   
+    }
     var locationsTitle = ko.observableArray([]); //List of all the titles
     model.forEach(function(locName) {
         locationsTitle.push(new loc(locName).title());
@@ -157,18 +157,15 @@ var viewModel = function() {
             markers[t].setMap(map);
         }
     }
-
-
-this.apiimage=ko.observableArray(); //array to store url of images mapped
-    var loadapi=function(location)
-    {
+    this.apiimage = ko.observableArray(); //array to store url of images mapped
+    var loadapi = function(location) {
         //function to store the urls in the apiimage array
-      self.apiimage.removeAll();
-       
-         var lat = location.location.lat;
+        self.apiimage.removeAll();
+
+        var lat = location.location.lat;
         var long = location.location.lng;
         console.log(lat)
-       // return lat;
+        // return lat;
         var urlflikr = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ce3902a4e6719f36c22ceb61431312be&tags=food&text=people&lat=' + lat + '&lon=' + long + '&format=json&nojsoncallback=1';
         var jqxhr = $.ajax({
             url: urlflikr,
@@ -178,19 +175,27 @@ this.apiimage=ko.observableArray(); //array to store url of images mapped
                 var articlrList = response.photos.photo;
                 var num = Math.floor((Math.random() * 100) + 1);
                 for (var i = num; i < num + 2; i++) {
+                    if (articlrList[i].hasOwnProperty("farm")) {
+                        // alert("yes, i have that property");
+                        var c = 0; //just a vague definition
+                    } else {
+                        alert("No pics found");
+                    }
                     var farmid = articlrList[i].farm;
                     var serverid = articlrList[i].server;
                     var photoid = articlrList[i].id;
                     var secret = articlrList[i].secret;
                     var url = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + photoid + '_' + secret + '.jpg';
-                    //$("#images").append('<img src="' + url + '" class="thumbnail ">');
                     self.apiimage.push(url);
                 }
 
             }
 
-        })
+        }).fail(function(xhr, textStatus, errorThrown) {
+            var str = "Sorry the request failed to load.Try agin after sometime";            
+            alert(str);
+        });
     }
 };
-var vm = new viewModel();
+var vm = new ViewModel();
 ko.applyBindings(vm);
