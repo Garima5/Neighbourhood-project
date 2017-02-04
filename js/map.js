@@ -76,8 +76,6 @@ function initMap() {
  * @param {infowindow} infowindow
  */
 function populateInfoWindow(marker, infowindow) {
-    var $body1 = $('#images'); //getting the div with id imges
-    $body1.empty(); //clear previous code from div
     if (infowindow.marker != marker) {
         // Clear the infowindow content to give the streetview time to load.
         infowindow.setContent('');
@@ -88,35 +86,6 @@ function populateInfoWindow(marker, infowindow) {
         });
         var streetViewService = new google.maps.StreetViewService();
         var radius = 50;
-        //Ajax requests using flickr api
-        //This api request gives different types of food and people that can be found at that place
-       /* var $body = $('#images');
-        var lat = marker.getPosition().lat();
-        var long = marker.getPosition().lng();
-        var urlflikr = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ce3902a4e6719f36c22ceb61431312be&tags=food&text=people&lat=' + lat + '&lon=' + long + '&format=json&nojsoncallback=1';
-        var jqxhr = $.ajax({
-            url: urlflikr,
-            dataType: "json",
-            success: function(response) {
-                //console.log(response);
-                var articlrList = response.photos.photo;
-                var num = Math.floor((Math.random() * 100) + 1);
-                for (var i = num; i < num + 2; i++) {
-                    var farmid = articlrList[i].farm;
-                    var serverid = articlrList[i].server;
-                    var photoid = articlrList[i].id;
-                    var secret = articlrList[i].secret;
-                    var url = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + photoid + '_' + secret + '.jpg';
-                    $("#images").append('<img src="' + url + '" class="thumbnail ">');
-                }
-
-            }
-
-        }).fail(function(xhr, textStatus, errorThrown) {
-            var str = "Sory the request failed to load.Try agin after sometime";
-            $("#images").append('<div id="errormsg">' + str + '</div>');
-        });*/
-
         //Below code help taken from Udacity's code provided in course
         // In case the status is OK, which means the pano was found, compute the
         // position of the streetview image, then calculate the heading, then get a
