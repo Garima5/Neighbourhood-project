@@ -8,7 +8,7 @@ padding:0;
 #backrow {
 height:100%;
 background-color:#06001a;
-overflow:hidden;
+overflow:scroll;
 }
 
 #pano {
