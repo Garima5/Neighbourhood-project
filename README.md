@@ -19,5 +19,5 @@ mapicons.mapsmarker.com
 
 https://developers.google.com/maps/documentation/javascript/examples/marker-animations for help with animating markers
 <br>
-https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf
-https://developers.google.com/maps/documentation/javascript/custom-markers for help with marker shapes
+https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf <br>
+https://developers.google.com/maps/documentation/javascript/custom-markers for help with marker shapes <br>
