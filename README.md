@@ -15,7 +15,7 @@
 All mapicons have been taken from:
 mapicons.mapsmarker.com
 
-###Thanks to following resources for help:
+### Thanks to following resources for help:
 
 https://developers.google.com/maps/documentation/javascript/examples/marker-animations for help with animating markers
 <br>
