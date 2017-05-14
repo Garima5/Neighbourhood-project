@@ -1,6 +1,6 @@
 # Neighbourhood-project
-##The project is developed for Front End Developer Nanodegree Udacity
-###How to Use the app
+## The project is developed for Front End Developer Nanodegree Udacity
+### How to Use the app
 1. Download the project from git
 2. open the index.html file in chrome
 3. The app shows the neighbourhood that I want to live in that is New York City
