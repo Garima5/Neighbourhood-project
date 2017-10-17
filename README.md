@@ -9,6 +9,10 @@
 6. Filter the list and markers by typing the name of place in text box
 7. To get back the entire list and all markers,click reset button , or delete the text from text box
 
+### Or View The Project at:
+https://garima5.github.io/Neighbourhood-project/
+
+
 ### Code provided by Udacity's FEND course on API was taken help from to fill the infoWindow
 **Knockout js, Google Maps pi and 3rd party API were the main technologies used in the project**
 
